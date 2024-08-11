@@ -1,6 +1,6 @@
 const { default: axios } = require("axios");
 
-export function getJogadores() {
+export function getJogadores(nome = "") {
   let jogadores = [];
 
   let config = {
@@ -30,5 +30,9 @@ export function getJogadores() {
       console.log(error);
     });
 
-  return { jogadores };
+  jogadores = jogadores.filter((jogador) =>
+    jogador.nome.toLowerCase().includes(nome.toLowerCase())
+  );
+
+  return { jogadores: jogadores };
 }
