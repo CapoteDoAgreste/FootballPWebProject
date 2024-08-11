@@ -20,9 +20,9 @@ export function getJogadores() {
         jogadores.push({
           id: dadosJogador.player.id,
           imagem: dadosJogador.player.photo,
-          name: dadosJogador.player.name,
+          nome: dadosJogador.player.name,
           time: dadosJogador.statistics[0].team.name,
-          position: dadosJogador.statistics[0].games.position,
+          posicao: dadosJogador.statistics[0].games.position,
         });
       });
     })
