@@ -3,7 +3,6 @@ import Star from "./Star";
 export default function CardJogador({ jogador }) {
   const { id, nome, imagem, posicao, time } = jogador;
 
-  console.log(jogador);
   return (
     <div className="bg-gray-50 w-[60vw] h-[10rem] grid grid-cols-3 grid-row-1 pd-5 rounded-lg shadow-xl">
       <div>
