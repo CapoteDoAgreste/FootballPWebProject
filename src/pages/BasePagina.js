@@ -1,5 +1,4 @@
 import { useState } from "react";
-import PlayerCard from "../components/CardJogador";
 import InputPesquisa from "../components/InputPesquisa";
 import Listagem from "../components/Listagem";
 import { mock } from "../scripts/mockedResponse";
