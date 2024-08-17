@@ -16,7 +16,7 @@ export default function Listagem({ jogadores, textoPesquisado, titulo }) {
       <br />
 
       <div>
-        {jogadores.jogadores.map((jogador) => {
+        {jogadores.jogadores?.map((jogador) => {
           return (
             <>
               <CardJogador jogador={jogador} key={jogador.id} />

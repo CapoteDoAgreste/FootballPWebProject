@@ -1,6 +1,6 @@
 const { default: axios } = require("axios");
 
-export function getJogadores(nome = "") {
+export async function getJogadores() {
   let jogadores = [];
 
   let config = {
@@ -13,26 +13,23 @@ export function getJogadores(nome = "") {
     },
   };
 
-  axios
-    .request(config)
-    .then(({ response }) => {
-      response.forEach((dadosJogador) => {
-        jogadores.push({
-          id: dadosJogador.player.id,
-          imagem: dadosJogador.player.photo,
-          nome: dadosJogador.player.name,
-          time: dadosJogador.statistics[0].team.name,
-          posicao: dadosJogador.statistics[0].games.position,
-        });
+  try {
+    // Await axios request and access response data
+    const { data } = await axios.request(config);
+
+    // Iterate over the response data to build the jogadores array
+    data.response.forEach((dadosJogador) => {
+      jogadores.push({
+        id: dadosJogador.player.id,
+        imagem: dadosJogador.player.photo,
+        nome: dadosJogador.player.name,
+        time: dadosJogador.statistics[0].team.name,
+        posicao: dadosJogador.statistics[0].games.position,
       });
-    })
-    .catch((error) => {
-      console.log(error);
     });
+  } catch (error) {
+    console.error("Error fetching jogadores:", error);
+  }
 
-  jogadores = jogadores.filter((jogador) =>
-    jogador.nome.toLowerCase().includes(nome.toLowerCase())
-  );
-
-  return { jogadores: jogadores };
+  return { jogadores };
 }
