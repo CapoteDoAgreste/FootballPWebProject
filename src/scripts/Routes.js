@@ -1,4 +1,4 @@
-const { default: axios } = require("axios");
+import axios from "axios";
 
 export async function getJogadores() {
   let jogadores = [];
@@ -31,5 +31,5 @@ export async function getJogadores() {
     console.error("Error fetching jogadores:", error);
   }
 
-  return { jogadores };
+  return { jogadores: jogadores };
 }
