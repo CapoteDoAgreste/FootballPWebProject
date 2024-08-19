@@ -1,6 +1,10 @@
 import Star from "./Star";
 
-export default function CardJogador({ jogador }) {
+export default function CardJogador({
+  jogador,
+  adicionarFavorito,
+  tirarFavorito,
+}) {
   const { id, nome, imagem, posicao, time } = jogador;
 
   return (
@@ -21,8 +25,13 @@ export default function CardJogador({ jogador }) {
           Time: <span className="font-normal">{time}</span>
         </h3>
       </div>
-      <div>
-        <Star id={id} />
+      <div className="hover:opacity-75">
+        <Star
+          id={id}
+          jogador={jogador}
+          adicionarFavorito={adicionarFavorito}
+          tirarFavorito={tirarFavorito}
+        />
       </div>
     </div>
   );

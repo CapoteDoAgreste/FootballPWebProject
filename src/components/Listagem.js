@@ -1,6 +1,12 @@
 import CardJogador from "./CardJogador";
 
-export default function Listagem({ jogadores, textoPesquisado, titulo }) {
+export default function Listagem({
+  jogadores,
+  textoPesquisado,
+  titulo,
+  adicionarFavorito,
+  tirarFavorito,
+}) {
   return (
     <div className="md:container md:mx-auto">
       <h2 className="ml-16 font-semibold">{titulo + ":"}</h2>
@@ -16,10 +22,15 @@ export default function Listagem({ jogadores, textoPesquisado, titulo }) {
       <br />
 
       <div>
-        {jogadores.jogadores?.map((jogador) => {
+        {jogadores?.jogadores?.map((jogador) => {
           return (
             <>
-              <CardJogador jogador={jogador} key={jogador.id} />
+              <CardJogador
+                jogador={jogador}
+                key={jogador.id}
+                adicionarFavorito={adicionarFavorito}
+                tirarFavorito={tirarFavorito}
+              />
               <br />
             </>
           );
