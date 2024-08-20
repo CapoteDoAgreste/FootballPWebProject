@@ -3,6 +3,7 @@ import InputPesquisa from "../components/InputPesquisa";
 import Listagem from "../components/Listagem";
 import { mock } from "../scripts/mockedResponse";
 import { getJogadores } from "../scripts/Routes";
+import Sidebar from "../components/Sidebar";
 
 export default function BasePagina({ titulo }) {
   const [jogadores, setJogadores] = useState(
@@ -100,14 +101,17 @@ export default function BasePagina({ titulo }) {
 
   return (
     <>
-      <div className="mt-10">
-        <Listagem
-          jogadores={lista}
-          textoPesquisado={pesquisa}
-          titulo={titulo}
-          adicionarFavorito={adicionarFavorito}
-          tirarFavorito={tirarFavorito}
-        />
+      <div>
+        <Sidebar />
+        <div className="mt-10 ml-[15rem]">
+          <Listagem
+            jogadores={lista}
+            textoPesquisado={pesquisa}
+            titulo={titulo}
+            adicionarFavorito={adicionarFavorito}
+            tirarFavorito={tirarFavorito}
+          />
+        </div>
       </div>
       <div className="fixed top-5 right-5">
         <InputPesquisa setPesquisa={search} />
