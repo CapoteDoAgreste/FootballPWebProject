@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function Sidebar() {
   const Option = ({ text }) => {
     return (
@@ -8,9 +10,13 @@ export default function Sidebar() {
   };
 
   return (
-    <div className="top-0 w-[10rem] h-[100vh] bg-gray-50 shadow-2xl absolute">
-      <Option text={"Atletas"} />
-      <Option text={"Favoritos"} />
+    <div className="top-0 w-[10rem] h-[100%] bg-gray-50 shadow-2xl fixed">
+      <Link to="/">
+        <Option text={"Atletas"} />
+      </Link>
+      <Link to="/favoritos">
+        <Option text={"Favoritos"} />
+      </Link>
     </div>
   );
 }
