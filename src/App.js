@@ -1,8 +1,13 @@
+import { BrowserRouter } from "react-router-dom";
 import "./App.css";
-import BasePagina from "./pages/BasePagina";
+import MainRoutes from "./components/RoutesFrontEnd/MainRoutes";
 
 function App() {
-  return <BasePagina titulo={"Atletas"} />;
+  return (
+    <BrowserRouter>
+      <MainRoutes />
+    </BrowserRouter>
+  );
 }
 
 export default App;
