@@ -31,7 +31,7 @@ export default function BasePagina({ titulo }) {
     if (favoritos?.jogadores?.length > 0) {
       if (titulo !== "Atletas") {
         setJogadores(favoritos);
-        setLista(jogadores);
+        setLista(favoritos);
       }
     } else {
       criarFavorito();
