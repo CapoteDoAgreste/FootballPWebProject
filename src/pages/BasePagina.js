@@ -11,8 +11,14 @@ export default function BasePagina({ titulo }) {
   );
   const [lista, setLista] = useState(jogadores);
   const [pesquisa, setPesquisa] = useState("");
+  const [favoritosDisabled, setFavoritosDisabled] = useState(true);
 
   useEffect(() => {
+    const favoritos = JSON.parse(localStorage.getItem("favoritos"));
+    if (favoritos?.jogadores?.length > 0) {
+      setFavoritosDisabled(false);
+    }
+
     const fetchJogadores = async () => {
       const fetchedJogadores = await getJogadores();
       setJogadores(fetchedJogadores);
@@ -70,6 +76,12 @@ export default function BasePagina({ titulo }) {
     } else {
       console.log("O jogador já está na lista de favoritos.");
     }
+
+    if (favoritos?.jogadores?.length > 0) {
+      setFavoritosDisabled(false);
+    } else {
+      setFavoritosDisabled(true);
+    }
   };
 
   const tirarFavorito = (jogador, setImagem, imagem) => {
@@ -88,6 +100,12 @@ export default function BasePagina({ titulo }) {
     } else {
       console.log("O jogador não está na lista de favoritos.");
     }
+
+    if (favoritos?.jogadores?.length > 0) {
+      setFavoritosDisabled(false);
+    } else {
+      setFavoritosDisabled(true);
+    }
   };
 
   const search = (pesquisaString) => {
@@ -102,7 +120,7 @@ export default function BasePagina({ titulo }) {
   return (
     <>
       <div>
-        <Sidebar />
+        <Sidebar favoritosDisabled={favoritosDisabled} />
         <div className="mt-10 ml-[15rem]">
           <Listagem
             jogadores={lista}
